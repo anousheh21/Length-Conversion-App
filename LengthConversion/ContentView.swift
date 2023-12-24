@@ -117,21 +117,24 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section {
+                Section("Initial Length") {
                     Picker("Initial Length Unit", selection: $inputLengthType) {
                         ForEach(lengthTypes, id: \.self) {
-                            Text("\($0)")
+                            Text($0)
                         }
                     }
+                    .pickerStyle(.segmented)
                     TextField("Enter Length", value: $inputLength, format: .number)
+                        .keyboardType(.decimalPad)
                 }
                 
-                Section {
+                Section("Converted Length") {
                     Picker("Final Length Unit", selection: $outputLengthType) {
                         ForEach(lengthTypes, id: \.self) {
-                            Text("\($0)")
+                            Text($0)
                         }
                     }
+                    .pickerStyle(.segmented)
                     if inputLengthType == "m" && outputLengthType == "km" {
                        Text(mToKm, format: .number)
                     } else if inputLengthType == "m" && outputLengthType == "yards" {
