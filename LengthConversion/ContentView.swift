@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var inputLengthType = "m"
     @State private var outputLengthType = "km"
     
-    
     let lengthTypes = ["m", "km", "yards", "feet", "miles"]
     
     var mToKm: Double {
@@ -133,8 +132,49 @@ struct ContentView: View {
                             Text("\($0)")
                         }
                     }
-                    Text(mToKm, format: .number)
-                    
+                    if inputLengthType == "m" && outputLengthType == "km" {
+                       Text(mToKm, format: .number)
+                    } else if inputLengthType == "m" && outputLengthType == "yards" {
+                        Text(mToYards,  format: .number)
+                    } else if inputLengthType == "km" && outputLengthType == "m" {
+                        Text(kmToM, format: .number)
+                    } else if inputLengthType == "yards" && outputLengthType == "m" {
+                        Text(yardsToM, format: .number)
+                    } else if inputLengthType == "m" && outputLengthType == "feet" {
+                        Text(mToFeet, format: .number)
+                    } else if inputLengthType == "m" && outputLengthType == "miles" {
+                        Text(mToMiles, format: .number)
+                    } else if inputLengthType == "feet" && outputLengthType == "m" {
+                        Text(feetToM, format: .number)
+                    } else if inputLengthType == "miles" && outputLengthType == "m" {
+                        Text(milesToM, format: .number)
+                    } else if inputLengthType == "km" && outputLengthType == "yards" {
+                        Text(kmToYards, format: .number)
+                    } else if inputLengthType == "yards" && outputLengthType == "km" {
+                        Text(yardsToKm, format: .number)
+                    } else if inputLengthType == "km" && outputLengthType == "feet" {
+                        Text(kmToFeet, format: .number)
+                    } else if inputLengthType == "feet" && outputLengthType == "km" {
+                        Text(feetToKm, format: .number)
+                    } else if inputLengthType == "km" && outputLengthType == "miles" {
+                        Text(kmToMiles, format: .number)
+                    } else if inputLengthType == "miles" && outputLengthType == "km" {
+                        Text(milesToKm, format: .number)
+                    } else if inputLengthType == "yards" && outputLengthType == "feet" {
+                        Text(yardsToFeet, format: .number)
+                    } else if inputLengthType == "feet" && outputLengthType == "yards" {
+                        Text(feetToYards, format: .number)
+                    } else if inputLengthType == "yards" && outputLengthType == "miles" {
+                        Text(yardsToMiles, format: .number)
+                    } else if inputLengthType == "miles" && outputLengthType == "yards" {
+                        Text(milesToYards, format: .number)
+                    } else if inputLengthType == "feet" && outputLengthType == "miles" {
+                        Text(feetToMiles, format: .number)
+                    } else if inputLengthType == "miles" && outputLengthType == "feet" {
+                        Text(milesToFeet, format: .number)
+                    } else {
+                        Text(inputLength, format: .number)
+                    }
                 }
                 .navigationTitle("Length Converter")
             }
